@@ -105,7 +105,10 @@ var FeatureSets = map[FeatureSet]*FeatureGateEnabledDisabled{
 		Enabled:  []string{},
 		Disabled: []string{},
 	},
-	TechPreviewNoUpgrade: newDefaultFeatures().toFeatures(),
+	TechPreviewNoUpgrade: newDefaultFeatures().
+		with(
+			"MemoryManager", // kni-telco-compute, alukiano
+		).toFeatures(),
 	LatencySensitive: newDefaultFeatures().
 		with(
 			"TopologyManager", // sig-pod, sjenning
